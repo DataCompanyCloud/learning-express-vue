@@ -6,5 +6,5 @@ app.use(express.json());
 app.use(router)
 
 app.listen(3005, () => {
-    console.log("Listening!")
+    console.log("Listening on port 3005")
 })
