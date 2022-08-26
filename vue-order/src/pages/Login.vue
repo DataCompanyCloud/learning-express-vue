@@ -82,7 +82,7 @@ export default defineComponent({
     const handleLoginButton = async () => {
       loading.value = true
       try {
-        const response = await axios.post<LoginDTO>('http://localhost:3005/login-seller', {
+        const response = await axios.post<LoginDTO>('http://192.168.254.129:3005/login-seller', {
           email: email.value,
           password: password.value
         })

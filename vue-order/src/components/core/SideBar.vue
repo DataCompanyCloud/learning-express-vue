@@ -15,7 +15,9 @@
           role="button"
           :class="item.isActive ? 'active' : ''"
           aria-current="page"
-          @click="item.handleClick"
+          data-bs-toggle="offcanvas"
+          :href="parentSlideId"
+          @click="onMenuClick(item)"
         >
           <div>
             <font-awesome-icon :icon="item.icon" />
@@ -31,10 +33,11 @@
     <hr>
     <button
       class="btn btn-primary"
-      @click="handleLogout"
+      data-bs-toggle="modal" 
+      data-bs-target="#modal-logout"
     >
       Logout
-    </button>
+    </button>    
   </div>
 </template>
 
@@ -47,7 +50,14 @@ import DefinedRoutes from '../../router/defined-routes'
 import useAuth from '../../reactive/useAuth'
 
 export default defineComponent({
-  setup() {
+  props: {
+    parentSlideId: {
+      type: String,
+      default: ''
+    }
+  },
+  emits: ['onMenuClick'],
+  setup(prop, { emit }) {
     // @ts-ignore
     const sideBarItems: Ref<SidebarItem[]> = ref([
       {
@@ -70,6 +80,11 @@ export default defineComponent({
       },
     ])
 
+    const onMenuClick = (item: SidebarItem) => {
+      item.handleClick()
+      emit('onMenuClick', item)
+    }
+
     const handleLogout = () => {
       try {
         useAuth.logout()
@@ -79,6 +94,7 @@ export default defineComponent({
     }
 
     return {
+      onMenuClick,
       sideBarItems,
       routeName: computed(() => useRoute().name),
       handleLogout,

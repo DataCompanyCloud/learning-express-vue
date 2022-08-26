@@ -3,14 +3,22 @@
     class="main-layout d-flex"
   >
     <side-bar
-      style="width: 280px"
+      id="slide-bar"
+      class="offcanvas-start offcanvas-md"
+      data-bs-scroll="true"
+      tabindex="-1"
+      parent-slide-id="#slide-bar"
+      style="width: 280px;"
     />
     <div
       class="flex-grow-1 d-flex flex-column"
     >
-      <nav class="navbar bg-light">
-        <div class="container-fluid">
-          <span class="navbar-brand">
+      <nav class="navbar bg-light">        
+        <div class="container-fluid flex justify-content-start justify-content-md-center">
+          <div class='p-2 d-md-none' role="button" data-bs-toggle="offcanvas" href="#slide-bar">
+            <font-awesome-icon icon="fa-solid fa-bars" />
+          </div>          
+          <span class="navbar-brand ms-5 m-md-0">
             Vue Order App
           </span>
         </div>
@@ -27,11 +35,28 @@
         </router-view>
       </div>
     </div>
+    <div id="modal-logout" class="modal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Logout</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Deseja Mesmo Sair?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn bg-transparent" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn bg-danger text-white" @click="handleLogout" data-bs-dismiss="modal">Sair</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, Ref, ref } from 'vue'
 import Toast from '../components/core/ToastController.vue'
 import SideBar from '../components/core/SideBar.vue'
 import Login from '../pages/Login.vue'

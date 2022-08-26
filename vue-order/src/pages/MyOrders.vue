@@ -1,23 +1,25 @@
 <template>
-  <div>
-    <button
-      type="button"
-      class="btn btn-primary"
-      @click="addItemToList"
-    >
-      Add Item
-    </button>
+  <div class="p-5">
+    <div class="mb-3">
+      <button
+        type="button"
+        class="btn btn-primary"
+        @click="addItemToList(0)"
+      >
+        Add Item
+      </button>
+    </div>
 
-    <ol class="list-group list-group-numbered m-5">
+    <ol class="list-group list-group-numbered">
       <div 
         v-for="order in orders" 
         :key="order.id">
-        <li class="list-group-item d-flex flex-column font-monospace">
+        <li class="list-group-item d-flex flex-column"> 
           <div class="fs-6"> #{{ order.id }} </div>
-          <div class="flex-grow-1 d-flex justify-content-between">
-            <div> {{ order.description }}</div>
-            <div class="d-flex">
-              <div class="me-3 text-left"> {{ order.quantity }} </div>
+          <div class="flex-grow-1 row justify-content-between">
+            <div class="col-6 col-md-7 col-lg-9"> {{ order.description }}</div>
+            <div class="col-6 col-md-5 col-lg-3 col-xl-2 d-flex">
+              <div class="flex-grow-1 me-3 text-left"> x{{ order.quantity }} </div>
               <div> R$ {{ order.total}} </div>
             </div>
           </div>          
@@ -53,9 +55,9 @@ export default defineComponent({
       }
     })
 
-    const addItemToList = () => {
+    const addItemToList = (id: number) => {
       orders.value.push({
-        id: 9999,
+        id: id,
         id_seller: 99999,
         quantity: 1000,
         description: 'A beatifull ice-cream',
