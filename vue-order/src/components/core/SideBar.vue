@@ -43,7 +43,7 @@ import { computed, ComputedRef, defineComponent, ref, Ref } from 'vue'
 import router from '../../router'
 import { SidebarItem } from '../../types/SidebarItem'
 import { useRoute } from 'vue-router'
-import { DefinedRoutes } from '../../router/routes'
+import DefinedRoutes from '../../router/defined-routes'
 import useAuth from '../../reactive/useAuth'
 
 export default defineComponent({
