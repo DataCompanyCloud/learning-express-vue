@@ -8,7 +8,23 @@
       Add Item
     </button>
 
-    {{ orders }}
+    <ol class="list-group list-group-numbered m-5">
+      <div 
+        v-for="order in orders" 
+        :key="order.id">
+        <li class="list-group-item d-flex flex-column font-monospace">
+          <div class="fs-6"> #{{ order.id }} </div>
+          <div class="flex-grow-1 d-flex justify-content-between">
+            <div> {{ order.description }}</div>
+            <div class="d-flex">
+              <div class="me-3 text-left"> {{ order.quantity }} </div>
+              <div> R$ {{ order.total}} </div>
+            </div>
+          </div>          
+        </li>
+      </div>
+    </ol>
+
   </div>
 </template>
 
