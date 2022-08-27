@@ -15,7 +15,7 @@
           role="button"
           :class="item.isActive ? 'active' : ''"
           aria-current="page"
-          data-bs-toggle="offcanvas"
+          data-bs-dismiss="offcanvas"
           :href="parentSlideId"
           @click="onMenuClick(item)"
         >
