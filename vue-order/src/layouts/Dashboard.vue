@@ -4,7 +4,7 @@
   >
     <side-bar
       id="slide-bar"
-      class="offcanvas-start offcanvas-md"
+      class="offcanvas-start offcanvas-lg"
       data-bs-scroll="true"
       tabindex="-1"
       parent-slide-id="#slide-bar"
@@ -14,11 +14,11 @@
       class="flex-grow-1 d-flex flex-column"
     >
       <nav class="navbar bg-light">        
-        <div class="container-fluid flex justify-content-start justify-content-md-center">
-          <div class='p-2 d-md-none' role="button" data-bs-toggle="offcanvas" href="#slide-bar">
+        <div class="container-fluid flex justify-content-start justify-content-lg-center">
+          <div class='p-2 d-lg-none' role="button" data-bs-toggle="offcanvas" href="#slide-bar">
             <font-awesome-icon icon="fa-solid fa-bars" />
           </div>          
-          <span class="navbar-brand ms-5 m-md-0">
+          <span class="navbar-brand ms-5 ms-lg-0">
             Vue Order App
           </span>
         </div>
